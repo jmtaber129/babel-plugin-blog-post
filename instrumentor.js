@@ -40,6 +40,8 @@ function transform() {
         });
 
         const replacementFunction = t.arrowFunctionExpression([t.identifier('e')], functionBody);
+
+        path.get('value').replaceWith(replacementFunction);
       },
     },
   };
