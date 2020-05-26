@@ -6,6 +6,16 @@ function transform() {
           // Not our target node.
           return;
         }
+
+        const parent = path.findParent(path => {
+          return (
+            path.isCallExpression() && path.node.callee.name === 'createReactClass'
+          );
+        });
+
+        if (!parent) {
+          return;
+        }
       },
     },
   };
