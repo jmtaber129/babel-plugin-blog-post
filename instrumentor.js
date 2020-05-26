@@ -1,3 +1,5 @@
+const t = require('babel-types');
+
 function transform() {
   return {
     visitor: {
@@ -17,6 +19,15 @@ function transform() {
           return;
         }
 
+        const callOriginalFunctionExpression = t.memberExpression(
+          path.node.value, // The actual function is the 'value' of the ObjectProperty.
+          t.identifier('call')
+        );
+
+        const calledFunction = t.callExpression(callOriginalFunctionExpression, [
+          t.identifier('this'), // 't.thisExpression()' doesn't give the correct identifier here.
+          t.identifier('e'), // The event argument.
+        ]);
       },
     },
   };
