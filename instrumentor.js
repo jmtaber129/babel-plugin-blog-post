@@ -29,9 +29,19 @@ const hasTouchableMixin = path => {
       node.key.name === 'mixins' &&
       node.value.type === 'ArrayExpression'
     ) {
-      // TODO: Implement.
+      const state = { hasTouchableMixin: false };
+      path.getSibling(i).traverse(identifierVisitor, { visitorState: state });
+      return state.hasTouchableMixin;
     }
   });
+};
+
+const identifierVisitor = {
+  Identifier(path) {
+    if (path.node.name === 'Touchable') {
+      this.visitorState.hasTouchableMixin = true;
+    }
+  },
 };
 
 module.exports = transform;
