@@ -2,7 +2,10 @@ function transform() {
   return {
     visitor: {
       ObjectProperty(path) {
-        // TODO: Implement
+        if (path.node.key.name !== 'touchableHandlePress') {
+          // Not our target node.
+          return;
+        }
       },
     },
   };
