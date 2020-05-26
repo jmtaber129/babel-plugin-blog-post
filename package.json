@@ -1,0 +1,29 @@
+{
+  "name": "babel-plugin-blog-post",
+  "version": "1.0.0",
+  "description": "Code for a blog post about a babel plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmtaber129/babel-plugin-blog-post.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmtaber129/babel-plugin-blog-post/issues"
+  },
+  "homepage": "https://github.com/jmtaber129/babel-plugin-blog-post#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "metro-react-native-babel-preset": "^0.59.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "babel-template": "^6.26.0",
+    "babel-types": "^6.26.0"
+  }
+}
