@@ -23,7 +23,15 @@ function transform() {
 }
 
 const hasTouchableMixin = path => {
-  // TODO: Implement.
+  return !!path.container.find((node, i) => {
+    if (
+      node.type === 'ObjectProperty' &&
+      node.key.name === 'mixins' &&
+      node.value.type === 'ArrayExpression'
+    ) {
+      // TODO: Implement.
+    }
+  });
 };
 
 module.exports = transform;
