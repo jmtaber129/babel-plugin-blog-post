@@ -28,6 +28,10 @@ function transform() {
           t.identifier('this'), // 't.thisExpression()' doesn't give the correct identifier here.
           t.identifier('e'), // The event argument.
         ]);
+
+        const autotrackExpression = buildAutotrackExpression({
+          THIS_EXPRESSION: t.identifier('this'),
+        });
       },
     },
   };
@@ -54,5 +58,10 @@ const identifierVisitor = {
     }
   },
 };
+
+// Creates a 'CallExpression' node.
+const buildAutotrackExpression = template(`
+  Heap.captureTouchablePress(THIS_EXPRESSION, e);
+`);
 
 module.exports = transform;
