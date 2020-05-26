@@ -1,4 +1,5 @@
 const t = require('babel-types');
+const template = require('babel-template');
 
 function transform() {
   return {
@@ -32,6 +33,11 @@ function transform() {
         const autotrackExpression = buildAutotrackExpression({
           THIS_EXPRESSION: t.identifier('this'),
         });
+
+        const functionBody = buildFunctionWrapper({
+          AUTOTRACK_EXPRESSION: autotrackExpression,
+          ORIGINAL_FUNCTION_CALL: calledFunction,
+        });
       },
     },
   };
@@ -63,5 +69,13 @@ const identifierVisitor = {
 const buildAutotrackExpression = template(`
   Heap.captureTouchablePress(THIS_EXPRESSION, e);
 `);
+
+// Creates a 'BlockStatement' node.
+const buildFunctionWrapper = template(`{
+  const Heap = require('@heap/react-native-heap').default;
+
+  AUTOTRACK_EXPRESSION
+  ORIGINAL_FUNCTION_CALL
+}`);
 
 module.exports = transform;
