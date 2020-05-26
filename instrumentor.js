@@ -38,6 +38,8 @@ function transform() {
           AUTOTRACK_EXPRESSION: autotrackExpression,
           ORIGINAL_FUNCTION_CALL: calledFunction,
         });
+
+        const replacementFunction = t.arrowFunctionExpression([t.identifier('e')], functionBody);
       },
     },
   };
