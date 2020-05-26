@@ -13,12 +13,17 @@ function transform() {
           );
         });
 
-        if (!parent) {
+        if (!(parent && hasTouchableMixin(path))) {
           return;
         }
+
       },
     },
   };
 }
+
+const hasTouchableMixin = path => {
+  // TODO: Implement.
+};
 
 module.exports = transform;
