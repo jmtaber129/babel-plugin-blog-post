@@ -76,7 +76,7 @@ const buildAutotrackExpression = template(`
 
 // Creates a 'BlockStatement' node.
 const buildFunctionWrapper = template(`{
-  const Heap = require('@heap/react-native-heap').default;
+  const Heap = require('babel-plugin-blog-post/Heap').default;
 
   AUTOTRACK_EXPRESSION
   ORIGINAL_FUNCTION_CALL
